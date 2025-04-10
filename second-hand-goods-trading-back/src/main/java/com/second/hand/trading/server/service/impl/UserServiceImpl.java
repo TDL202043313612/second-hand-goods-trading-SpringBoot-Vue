@@ -33,6 +33,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     public UserModel userLogin(String accountNumber, String userPassword){
+
         return userDao.userLogin(accountNumber,userPassword);
     }
 
@@ -42,6 +43,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     public boolean userSignIn(UserModel userModel){
+        System.out.println("userSignIn_: "+userModel.getUserType());
         return userDao.insert(userModel) == 1;
     }
 

@@ -42,7 +42,8 @@
                 userInfo:{
                     accountNumber:'',
                     userPassword:'',
-                    nickname:''
+                    nickname:'',
+                    userType:'',
                 }
             };
         },
@@ -52,6 +53,7 @@
             },
             signIn(){
                 console.log(this.userInfo.nickname);
+                this.userInfo.userType = 1;
                 if(this.userInfo.accountNumber&&this.userInfo.userPassword&&this.userInfo.nickname){
                     if(this.userInfo.userPassword!==this.userPassword2){
                         this.$message.error('两次输入的密码不相同！');

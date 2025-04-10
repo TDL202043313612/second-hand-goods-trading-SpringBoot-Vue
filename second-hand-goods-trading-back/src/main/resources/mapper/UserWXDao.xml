@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.second.hand.trading.server.dao.UserWXDao">
+    <resultMap id="BaseResultMap" type="com.second.hand.trading.server.model.UserModel">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="account_number" jdbcType="VARCHAR" property="accountNumber" />
+        <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+        <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+        <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+        <result column="sign_in_time" jdbcType="TIMESTAMP" property="signInTime" />
+        <result column="user_status" jdbcType="TINYINT" property="userStatus" />
+        <result column="wx_openid" jdbcType="VARCHAR" property="wxOpenid" />
+        <result column="user_type" jdbcType="TINYINT" property="userType" />
+
+
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, account_number, nickname, avatar, sign_in_time, user_status
+    </sql>
+    <select id="getWXUserToOpenid" resultMap="BaseResultMap">
+        select id, account_number, nickname, avatar, sign_in_time, user_status, user_type
+        from sh_user
+        where wx_openid = #{wxOpenid,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertWXUser" keyColumn="id" keyProperty="id" parameterType="com.second.hand.trading.server.model.UserModel" useGeneratedKeys="true">
+        insert into sh_user (wx_openid, nickname, avatar, sign_in_time, user_type)
+        values (#{wxOpenid,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR},
+                #{avatar,jdbcType=VARCHAR}, #{signInTime,jdbcType=TIMESTAMP}, #{userType,jdbcType=TINYINT})
+    </insert>
+
+    <update id="updateWXUser">
+        update sh_user
+        set nickname = #{nickname,jdbcType=VARCHAR},avatar = #{avatar,jdbcType=VARCHAR}
+        where wx_openid = #{wxOpenid,jdbcType=VARCHAR}
+    </update>
+</mapper>

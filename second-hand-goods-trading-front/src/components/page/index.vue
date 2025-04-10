@@ -145,7 +145,7 @@
                         page: page,
                         nums: 8
                     }).then(res => {
-                        console.log(res);
+                        console.log("findIdleTiem: ",res);
                         let list = res.data.list;
                         for (let i = 0; i < list.length; i++) {
                             list[i].timeStr = list[i].releaseTime.substring(0, 10) + " " + list[i].releaseTime.substring(11, 19);

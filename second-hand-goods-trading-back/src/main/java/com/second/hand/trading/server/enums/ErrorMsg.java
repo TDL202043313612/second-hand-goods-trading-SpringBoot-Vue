@@ -31,7 +31,9 @@ public enum ErrorMsg {
     COMMIT_FAIL_ERROR("提交失败"),
     FAVORITE_EXIT("收藏已存在"),
     INVALID_CODE("code不能为空"),
-    FAIL_WX_PORT("微信接口错误: ");
+    FAIL_WX_PORT("微信接口错误: "),
+    FAIL_WX_TOKEN("获取微信token失败");
+
     private String msg;
 
     ErrorMsg(String msg) {

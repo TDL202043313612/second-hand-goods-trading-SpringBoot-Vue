@@ -31,24 +31,16 @@ public class UserController {
      * @return
      */
     @PostMapping("sign-in")
-    public ResultVo signIn(@RequestBody  String userModel) throws JsonProcessingException {
+    public ResultVo signIn(@RequestBody  UserModel userModel) throws JsonProcessingException {
         System.out.println(userModel);
-        UserModel userModel_ = new UserModel();
 
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode jsonNode = objectMapper.readTree(userModel);
-        userModel_.setAccountNumber(jsonNode.get("userInfo").get("accountNumber").asText());
-        userModel_.setUserPassword(jsonNode.get("userInfo").get("userPassword").asText());
-        userModel_.setNickname(jsonNode.get("userInfo").get("nickname").asText());
-
-        userModel_.setSignInTime(new Timestamp(System.currentTimeMillis()));
-        if (userModel_.getAvatar() == null || "".equals(userModel_.getAvatar())) {
-            userModel_.setAvatar("https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png");
+        userModel.setSignInTime(new Timestamp(System.currentTimeMillis()));
+        if (userModel.getAvatar() == null || "".equals(userModel.getAvatar())) {
+            userModel.setAvatar("https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png");
         }
 
-        if (userService.userSignIn(userModel_)) {
-            return ResultVo.success(userModel_);
+        if (userService.userSignIn(userModel)) {
+            return ResultVo.success(userModel);
         }
         return ResultVo.fail(ErrorMsg.REGISTER_ERROR);
     }

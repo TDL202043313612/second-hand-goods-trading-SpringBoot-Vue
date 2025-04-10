@@ -87,6 +87,7 @@
             loginOut(){
                 this.$api.logout().then(res=>{
                     if(res.status_code===1){
+                        this.isLogin=false;
                         this.$globalData.userInfo={};
                         console.log("login out");
                         if ('/index' === this.$route.path) {

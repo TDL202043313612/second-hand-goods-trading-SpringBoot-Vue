@@ -40,7 +40,39 @@ public class UserModel implements Serializable {
 
     private Byte userStatus;
 
+    /**
+     * 微信openid
+     */
+    private String wxOpenid;
+
+
+    /**
+     * 用户分类：1：账号密码登录
+     *          2：微信授权登录
+     */
+    private String userType;
+
+
+
+    /**
+     * 微信code
+     *
+     */
+    private String code;
+
+
+
+
+    /**
+     * 微信token
+     *
+     */
+    private String token;
+
+
     private static final long serialVersionUID = 1L;
+
+
 
     public Long getId() {
         return id;
@@ -98,6 +130,39 @@ public class UserModel implements Serializable {
         this.userStatus = userStatus;
     }
 
+
+    public String getWxOpenid() {
+        return wxOpenid;
+    }
+
+    public void setWxOpenid(String wxOpenid) {
+        this.wxOpenid = wxOpenid;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
     @Override
     public boolean equals(Object that) {
         if (this == that) {
