@@ -56,10 +56,10 @@
                 this.userInfo.userType = 1;
                 if(this.userInfo.accountNumber&&this.userInfo.userPassword&&this.userInfo.nickname){
                     if(this.userInfo.userPassword!==this.userPassword2){
-                        this.$message.error('两次输入的密码不相同！');
+                        this.$message.error('两次输入的密码不一样！');
                     }else {
                         this.$api.signIn(this.userInfo).then(res=>{
-                            if(res.status_code===1){
+                            if(res.status_code=== 1){
                                 this.$message({
                                     message: '注册成功！',
                                     type: 'success'
